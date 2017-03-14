@@ -63,7 +63,9 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="CLogFile.cs" />
     <Compile Include="CLogger.cs" />
+    <Compile Include="CSaveState.cs" />
     <Compile Include="work_log.xaml.cs">
       <DependentUpon>work_log.xaml</DependentUpon>
       <SubType>Code</SubType>

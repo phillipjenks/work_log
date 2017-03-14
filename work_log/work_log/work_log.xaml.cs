@@ -93,6 +93,7 @@ namespace work_log {
             msg_txt.Visibility = System.Windows.Visibility.Visible;
             log_msg.Visibility = System.Windows.Visibility.Visible;
             log_msg.Content = "Enter Log Message";
+            msg_txt.Text = "";
         }
         private void HandleFinished() {
             main_label.Content = "Started: " + m_logger.StartTime + "\tFinished: " + m_logger.EndTime;

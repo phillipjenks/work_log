@@ -46,10 +46,17 @@ namespace work_log {
             }
         }
 
+        private CSaveState m_saveState = new CSaveState();
+        private CLogFile m_logFile = new CLogFile();
+
         public CLogger() {
         }
 
         public void Init() {
+            if(m_saveState.HasSaveState()) {
+                m_startTime = m_saveState.LoadStartTime();
+                m_state = WorkLogState.STATE_TIMING;
+            }
         }
 
         public void AdvanceState() {
@@ -72,10 +79,13 @@ namespace work_log {
 
         private void StartTiming() {
             m_startTime = DateTime.Now;
+            m_saveState.SaveStartTime(m_startTime);
         }
 
         private void StopTiming() {
             m_endTime = DateTime.Now;
+            m_logFile.SaveLog(StartTime, EndTime, m_logMsg);
+            m_saveState.CleanupSaveState();
         }
     }
 }
