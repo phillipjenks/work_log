@@ -1,0 +1,16 @@
+﻿<Window x:Class="work_log.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:work_log"
+        mc:Ignorable="d"
+        Title="Work Log" Height="157.447" Width="535.554" ResizeMode="NoResize">
+    <Grid>
+        <Button x:Name="start_stop_button" Content="Start" HorizontalAlignment="Left" Margin="10,31,0,0" VerticalAlignment="Top" Width="75" Click="start_stop_button_Click"/>
+        <Label x:Name="main_label" Content="Click The Start Button To Start A Session" HorizontalAlignment="Left" Margin="10,5,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="log_msg" Content="Enter Log Message&#xD;&#xA;" HorizontalAlignment="Left" Margin="10,56,0,0" VerticalAlignment="Top" RenderTransformOrigin="-0.232,0.283"/>
+        <TextBox x:Name="msg_txt" HorizontalAlignment="Left" Height="23" Margin="10,87,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="501" ToolTip="Enter Message"/>
+
+    </Grid>
+</Window>
