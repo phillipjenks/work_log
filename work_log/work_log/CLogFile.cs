@@ -30,7 +30,7 @@ namespace work_log {
             line += ",";
 
             line += GenTimeString(endTime);
-            line += ",,\"" + msg + "\"";
+            line += ",,,\"" + msg + "\"";
 
             StreamWriter fout = new StreamWriter(k_fileName, true);
             fout.WriteLine(line);
