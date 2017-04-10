@@ -84,7 +84,7 @@ namespace work_log {
 
         private void StopTiming() {
             m_endTime = DateTime.Now;
-            m_logFile.SaveLog(StartTime, EndTime, m_logMsg);
+            m_logFile.SaveLog(m_startTime, m_endTime, m_logMsg);
             m_saveState.CleanupSaveState();
         }
     }
