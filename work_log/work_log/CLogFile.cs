@@ -9,6 +9,7 @@ using System.Globalization;
 namespace work_log {
     public class CLogFile {
 
+        public static int k_interval = 6;
         private static String k_fileName = "work_log_raw.csv";
         private static String k_rawTimeFormat = "g";
 
@@ -41,11 +42,11 @@ namespace work_log {
             return time.AddMinutes(GetRemainderMinutes(time.Minute)).ToString("h:mm tt", k_Culture);
         }
 
-        public int RoundByQuarter(int val) {
-            int rem = val % 15;
+        public int RoundByValue(int val, int rnd) {
+            int rem = val % rnd;
 
-            if(rem >= 8) {
-                val += 15 - rem;
+            if(rem > rnd / 2) {
+                val += rnd - rem;
             } else {
                 val -= rem;
             }
@@ -54,7 +55,7 @@ namespace work_log {
         }
 
         public int GetRemainderMinutes(int mins) {
-            return RoundByQuarter(mins) - mins;
+            return RoundByValue(mins, k_interval) - mins;
         }
     }
 }
