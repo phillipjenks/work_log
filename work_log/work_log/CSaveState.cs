@@ -7,8 +7,13 @@ using System.IO;
 using System.Security.Permissions;
 
 namespace work_log {
+
+    // Class to represent the current save state of the work log
+    // The save state is the start time of the current session serialized as the binary version
+    // of the DateTime object
     class CSaveState {
 
+        // File to save the save state
         private static String k_saveFile = ".work_log_start_time.dat";
 
         private String FilePath {
@@ -17,10 +22,12 @@ namespace work_log {
             }
         }
 
+        // Is there an existing save state?
         public bool HasSaveState() {
             return File.Exists(FilePath);
         }
 
+        // Loads the current start time of the session. If there is none, return a default DateTime
         public DateTime LoadStartTime() {
             if(!HasSaveState()) {
                 return new DateTime();
@@ -35,6 +42,7 @@ namespace work_log {
             return DateTime.FromBinary(BitConverter.ToInt64(data, 0));
         }
 
+        // Saves the current start time of the session
         public void SaveStartTime(DateTime time) {
             CleanupSaveState();
 
@@ -43,6 +51,7 @@ namespace work_log {
             fout.Close();
         }
 
+        // Removes the existing save state
         public void CleanupSaveState() {
             if(HasSaveState()) {
                 File.Delete(FilePath);

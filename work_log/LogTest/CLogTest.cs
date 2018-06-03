@@ -6,6 +6,8 @@ using System.Collections.Generic;
 namespace LogTest {
     [TestClass]
     public class CLogTest {
+
+        // Method to test rounding by the log file. Should round to the nearest multiple of the given interval
         [TestMethod]
         public void TestRoundByVal() {
 
@@ -40,6 +42,7 @@ namespace LogTest {
             }
         }
 
+        // Method to test that the generate time strings are of the expected format
         [TestMethod]
         public void TestGenTimeString() {
             List<Tuple<DateTime, String>> expected = new List<Tuple<DateTime, String>>();

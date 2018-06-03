@@ -19,6 +19,7 @@ namespace work_log {
     /// </summary>
     /// 
 
+    // Utility class for adding items to the combobox
     public class NameValue
     {
         private String dataValue;
@@ -53,8 +54,10 @@ namespace work_log {
         public MainWindow() {
             InitializeComponent();
 
+            // Initialize the logger
             m_logger.Init();
 
+            // Add the combo box categories
             combo_box.Items.Add(new NameValue("MISC"));
             combo_box.Items.Add(new NameValue("GAMEPLAY"));
             combo_box.Items.Add(new NameValue("INFRASTRUCTURE"));
@@ -65,15 +68,19 @@ namespace work_log {
             combo_box.Items.Add(new NameValue("EDITOR"));
             combo_box.Items.Add(new NameValue("UNREAL"));
 
+            // Default to misc
             combo_box.SelectedIndex = 0;
 
+            // Initialize the UI to the current logging state
             HandleStateChange(); 
         }
 
+        // Event handler for clicks on the Start/Stop button
         private void start_stop_button_Click(object sender, RoutedEventArgs e) {
             HandleButtonClick();
         }
 
+        // Handle the start/stop click advancing state and sending data to the logger as necessary
         private void HandleButtonClick() {
             switch(m_logger.State) {
                 case WorkLogState.STATE_IDLE:
@@ -94,6 +101,7 @@ namespace work_log {
             }
         }
 
+        // Update the UI on a state change
         private void HandleStateChange() {
             switch (m_logger.State) {
                 case WorkLogState.STATE_IDLE:
@@ -108,6 +116,8 @@ namespace work_log {
             }
         }
 
+        // Get string from the UI and set the appropriate properties in the logger class
+        // Returns true if a message was successfully retrieved and saved in the logger
         private bool TryGetMessage() {
 
             String msg = msg_txt.Text.Trim(' ');
@@ -122,6 +132,7 @@ namespace work_log {
             return true;
         }
 
+        // Update the UI for the Idle state
         private void HandleIdle() {
             main_label.Content = "Click The Start Button To Start A Session";
             start_stop_button.Content = "Start";
@@ -129,6 +140,8 @@ namespace work_log {
             log_msg.Visibility = System.Windows.Visibility.Hidden;
             combo_box.Visibility = System.Windows.Visibility.Hidden;
         }
+
+        // Update the UI for the timing state
         private void HandleTiming() {
             main_label.Content = "Started Timing " + m_logger.StartTime;
             start_stop_button.Content = "Stop";
@@ -138,6 +151,8 @@ namespace work_log {
             msg_txt.Text = "";
             combo_box.Visibility = System.Windows.Visibility.Visible;
         }
+
+        // Update the UI for the after timing state
         private void HandleFinished() {
             main_label.Content = "Started: " + m_logger.StartTime + "\tFinished: " + m_logger.EndTime;
             start_stop_button.Content = "Start";
