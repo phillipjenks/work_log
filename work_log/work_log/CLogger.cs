@@ -46,6 +46,13 @@ namespace work_log {
             }
         }
 
+        private String m_category;
+        public String Category {
+            get {
+                return m_category;
+            }
+        }
+
         private CSaveState m_saveState = new CSaveState();
         private CLogFile m_logFile = new CLogFile();
 
@@ -77,6 +84,10 @@ namespace work_log {
             m_logMsg = msg;
         }
 
+        public void SetCategory(String cat) {
+            m_category = cat;
+        }
+
         private void StartTiming() {
             m_startTime = DateTime.Now;
             m_saveState.SaveStartTime(m_startTime);
@@ -84,7 +95,7 @@ namespace work_log {
 
         private void StopTiming() {
             m_endTime = DateTime.Now;
-            m_logFile.SaveLog(m_startTime, m_endTime, m_logMsg);
+            m_logFile.SaveLog(m_startTime, m_endTime, m_logMsg, m_category);
             m_saveState.CleanupSaveState();
         }
     }
