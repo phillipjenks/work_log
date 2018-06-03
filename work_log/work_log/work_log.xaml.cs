@@ -19,34 +19,6 @@ namespace work_log {
     /// </summary>
     /// 
 
-    // Utility class for adding items to the combobox
-    public class NameValue
-    {
-        private String dataValue;
-
-        public NameValue(String val)
-        {
-            dataValue = val;
-        }
-
-        public String DataName
-        {
-            get { return dataValue; }
-            set { dataValue = value; }
-        }
-
-        public String DataValue
-        {
-            get { return dataValue; }
-            set { dataValue = value; }
-        }
-
-        public override string ToString()
-        {
-            return dataValue;
-        }
-    };
-
     public partial class MainWindow : Window {
 
         private CLogger m_logger = new CLogger();
@@ -58,15 +30,15 @@ namespace work_log {
             m_logger.Init();
 
             // Add the combo box categories
-            combo_box.Items.Add(new NameValue("MISC"));
-            combo_box.Items.Add(new NameValue("GAMEPLAY"));
-            combo_box.Items.Add(new NameValue("INFRASTRUCTURE"));
-            combo_box.Items.Add(new NameValue("UI"));
-            combo_box.Items.Add(new NameValue("TRIGGER"));
-            combo_box.Items.Add(new NameValue("AI"));
-            combo_box.Items.Add(new NameValue("MP"));
-            combo_box.Items.Add(new NameValue("EDITOR"));
-            combo_box.Items.Add(new NameValue("UNREAL"));
+            combo_box.Items.Add("MISC");
+            combo_box.Items.Add("GAMEPLAY");
+            combo_box.Items.Add("INFRASTRUCTURE");
+            combo_box.Items.Add("UI");
+            combo_box.Items.Add("TRIGGER");
+            combo_box.Items.Add("AI");
+            combo_box.Items.Add("MP");
+            combo_box.Items.Add("EDITOR");
+            combo_box.Items.Add("UNREAL");
 
             // Default to misc
             combo_box.SelectedIndex = 0;
