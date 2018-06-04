@@ -30,6 +30,7 @@ namespace work_log {
             m_logger.Init();
 
             // Add the combo box categories
+            // TODO: Read these in from a text file so that they can be changed more easily
             combo_box.Items.Add("MISC");
             combo_box.Items.Add("GAMEPLAY");
             combo_box.Items.Add("INFRASTRUCTURE");
@@ -40,7 +41,7 @@ namespace work_log {
             combo_box.Items.Add("EDITOR");
             combo_box.Items.Add("UNREAL");
 
-            // Default to misc
+            // Default to MISC
             combo_box.SelectedIndex = 0;
 
             // Initialize the UI to the current logging state
