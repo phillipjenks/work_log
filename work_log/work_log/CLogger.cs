@@ -61,6 +61,9 @@ namespace work_log {
             }
         }
 
+        // A set containing the possible work categories
+        public HashSet<String> CategorySet = new HashSet<String>();
+
         // The save state and log file classes
         private CSaveState m_saveState = new CSaveState();
         private CLogFile m_logFile = new CLogFile();
@@ -74,6 +77,8 @@ namespace work_log {
                 m_startTime = m_saveState.LoadStartTime();
                 m_state = WorkLogState.STATE_TIMING;
             }
+
+            m_saveState.LoadCategories(CategorySet);
         }
 
         // Advance work log state

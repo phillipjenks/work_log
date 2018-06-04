@@ -16,6 +16,9 @@ namespace work_log {
         // File to save the save state
         private static String k_saveFile = ".work_log_start_time.dat";
 
+        // File that contains the possible categories
+        private static String k_catFile = "work_log_categories.txt";
+
         private String FilePath {
             get {
                 return k_saveFile;
@@ -55,6 +58,20 @@ namespace work_log {
         public void CleanupSaveState() {
             if(HasSaveState()) {
                 File.Delete(FilePath);
+            }
+        }
+
+        // Load given categories if they exist
+        public void LoadCategories(HashSet<String> cats) {
+            if(File.Exists(k_catFile)) {
+
+                String[] lines = File.ReadAllLines(k_catFile);
+                foreach(String line in lines) {
+                    String trimLine = line.Trim(' ');
+                    if (trimLine.Length > 0) {
+                        cats.Add(trimLine);
+                    }
+                }
             }
         }
     }

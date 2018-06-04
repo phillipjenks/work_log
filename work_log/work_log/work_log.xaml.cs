@@ -30,16 +30,22 @@ namespace work_log {
             m_logger.Init();
 
             // Add the combo box categories
-            // TODO: Read these in from a text file so that they can be changed more easily
-            combo_box.Items.Add("MISC");
-            combo_box.Items.Add("GAMEPLAY");
-            combo_box.Items.Add("INFRASTRUCTURE");
-            combo_box.Items.Add("UI");
-            combo_box.Items.Add("TRIGGER");
-            combo_box.Items.Add("AI");
-            combo_box.Items.Add("MP");
-            combo_box.Items.Add("EDITOR");
-            combo_box.Items.Add("UNREAL");
+            // If we aren't given any, just add some default categories
+            if (m_logger.CategorySet.Count == 0) {
+                combo_box.Items.Add("MISC");
+                combo_box.Items.Add("GAMEPLAY");
+                combo_box.Items.Add("INFRASTRUCTURE");
+                combo_box.Items.Add("UI");
+                combo_box.Items.Add("TRIGGER");
+                combo_box.Items.Add("AI");
+                combo_box.Items.Add("MP");
+                combo_box.Items.Add("EDITOR");
+                combo_box.Items.Add("UNREAL");
+            }
+
+            foreach (String cat in m_logger.CategorySet) {
+                combo_box.Items.Add(cat);
+            }
 
             // Default to MISC
             combo_box.SelectedIndex = 0;
